@@ -1,5 +1,7 @@
 package util;
 
+import java.util.Collection;
+
 public class PrinterUtils {
 
     public static <E> void println(E[] es) {
@@ -32,5 +34,11 @@ public class PrinterUtils {
             System.out.print(", " + es[i]);
         }
         System.out.println("]");
+    }
+
+    public static <E> void println(Collection<E> es) {
+        for (E e : es) {
+            System.out.println(e);
+        }
     }
 }
