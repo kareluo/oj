@@ -37,8 +37,10 @@ public class PrinterUtils {
     }
 
     public static <E> void println(Collection<E> es) {
+        System.out.print("[");
         for (E e : es) {
-            System.out.println(e);
+            System.out.print(e + ", ");
         }
+        System.out.println("]");
     }
 }
