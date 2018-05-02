@@ -29,7 +29,7 @@ class Solution {
             i += numLength;
             length += numLength + 1;
         }
-        
+
         return length;
     }
 
