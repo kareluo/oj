@@ -1,4 +1,4 @@
-package problems.p437_attempted;
+package problems.p437;
 
 import common.TreeNode;
 
