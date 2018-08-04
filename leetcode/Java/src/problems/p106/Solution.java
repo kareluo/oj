@@ -12,13 +12,16 @@ import common.TreeNode;
  * }
  */
 class Solution {
+
+    private int i, j;
+
     public TreeNode buildTree(int[] inorder, int[] postorder) {
 
-        //TODO
+        // TODO
         return null;
     }
 
-//    private TreeNode build(int[] inorder, int[] postorder, int ) {
-//
-//    }
+    private TreeNode build(int[] inorder, int[] postorder, int root) {
+        return null;
+    }
 }
