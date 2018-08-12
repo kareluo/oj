@@ -2,6 +2,8 @@ package problems.p653;
 
 import common.TreeNode;
 
+import java.util.Stack;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -12,15 +14,27 @@ import common.TreeNode;
  * }
  */
 class Solution {
-    public boolean findTarget(TreeNode root, int k) {
-        return root != null && (find(root, k - root.val)
-                || findTarget(root.left, k) || findTarget(root.right, k));
-    }
 
-    public boolean find(TreeNode root, int k) {
+    private Stack<Integer> stacks = new Stack<>();
+
+    public boolean findTarget(TreeNode root, int k) {
         if (root == null) return false;
-        if (root.val < k) return find(root.right, k);
-        if (root.val > k) return find(root.left, k);
-        return true;
+        if (findTarget(root.left, k)) {
+            return true;
+        }
+        while (!stacks.isEmpty()) {
+            Integer value = stacks.peek();
+            if (value >= root.val) {
+                if (value == root.val) {
+                    return true;
+                }
+                break;
+            }
+            stacks.pop();
+        }
+        if (k - root.val >= root.val) {
+            stacks.push(k - root.val);
+        }
+        return !stacks.isEmpty() && findTarget(root.right, k);
     }
 }

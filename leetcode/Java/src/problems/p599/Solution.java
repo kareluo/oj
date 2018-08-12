@@ -5,26 +5,23 @@ import java.util.List;
 
 class Solution {
     public String[] findRestaurant(String[] list1, String[] list2) {
-        if (list1.length < list2.length) {
+        if (list1.length > list2.length) {
             return findRestaurant(list2, list1);
         }
 
-        boolean interest = false;
+        List<String> favorites = new ArrayList<>();
         int length = list1.length + list2.length - 1;
-        List<String> restaurants = new ArrayList<>();
-        for (int k = 0; k < length; k++) {
-            interest = false;
-            for (int i = 0, j = k; j >= 0; i++, j--) {
-                if (list1[i].equals(list2[j])) {
-                    interest = true;
-                    restaurants.add(list1[i]);
+        for (int i = 0; i < length; i++) {
+            int max = Math.min(i, list2.length - 1);
+            int min = i - max;
+            for (int j = min, k = max; j < list1.length && k >= 0; j++, k--) {
+                if (list1[j].equals(list2[k])) {
+                    favorites.add(list1[j]);
                 }
             }
-            if (interest) break;
+            if (!favorites.isEmpty()) break;
         }
 
-        String[] res = new String[restaurants.size()];
-        restaurants.toArray(res);
-        return res;
+        return favorites.toArray(new String[favorites.size()]);
     }
 }
