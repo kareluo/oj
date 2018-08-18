@@ -4,7 +4,7 @@ package problems.p714;
 class Solution {
     public int maxProfit(int[] prices, int fee) {
         if (prices.length < 2) return 0;
-//        int i = 1, profit = 0, min = prices[0], max;
+        int i = 1, profit = 0, min = prices[0], max;
 //        while (i < prices.length) {
 //            while (i < prices.length && prices[i] <= min) {
 //                min = prices[i++];
